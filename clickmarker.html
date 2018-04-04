@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>  
+    <title>SI PERSEBARAN SMA NEGERI DI BANDAR LAMPUNG</title>
+    <style>
+        #googleMap {
+            background-color: gray;
+            width: 600px;
+            height: 400px;
+        }                  
+        body{
+            background-color:#7ba9f2;
+        }           
+        .footer {width:auto;                    
+            height: 10px;              
+            color:grey;   
+                                    
+        }  
+        table{
+            background-color:#aeccfc;
+            border-shadow:4px;
+        }                   
+    </style>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Sistem Informasi Geografis</title>
+    
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script>
+    // variabel global marker
+    var marker;
+    
+    function taruhMarker(peta, posisiTitik){
+        
+        if( marker ){
+        // pindahkan marker
+        marker.setPosition(posisiTitik);
+        } else {
+        // buat marker baru
+        marker = new google.maps.Marker({
+            position: posisiTitik,
+            map: peta
+        });
+        }
+    
+        // isi nilai koordinat ke form
+        document.getElementById("lat").value = posisiTitik.lat();
+        document.getElementById("lng").value = posisiTitik.lng();
+        
+    }
+    
+    function initialize() {
+    var propertiPeta = {
+        center:new google.maps.LatLng(-4.558585,105.406808),
+        zoom:9,
+        mapTypeId:google.maps.MapTypeId.ROADMAP
+    };
+    
+    var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
+    
+    // even listner ketika peta diklik
+    google.maps.event.addListener(peta, 'click', function(event) {
+        taruhMarker(this, event.latLng);
+    });
+
+    }
+
+
+// event jendela di-load  
+google.maps.event.addDomListener(window, 'load', initialize);
+  
+
+</script>
+  
+</head>
+<body>
+<h3><center> <img src= lambangbdl.png height= "40" width= "40">  SISTEM INFORMASI PERSEBARAN SMA NEGERI DI BANDAR LAMPUNG</center></h1></div>
+    
+    <center>
+    <table border=1 width:"100%">
+        <tr>
+            <td style="text-align:center;">
+                Home<br><br>
+                View All Data<br><br>
+                View Data Kategori 1<br><br>
+                View Data Kategori 2
+            </td>
+            <td>
+                <table border=0>
+                    <tr>
+                        <td><center><div id="googleMap"></div></div></center></td>
+                    </tr>
+                    <tr>
+                        <td><h3>Input Data Marker</h3></td>
+                    </tr>
+                    <tr>
+                    <table border=0 width:"100%">
+                    <form action="" method="post">
+                    <tr>
+                        <td>lat <br> <input type="text" id="lat" name="lat" value=""></td>
+                        <td> lng <br> <input type="text" id="lng" name="lng" value=""></td>   
+                    </tr>
+                    <tr>
+                        <table width="400px" border=1>
+                            <tr>
+                                    <td width="100%">Informasi<br>
+                                        <input type="text" id="info" name="info" value="" width="100%"></td>
+                            </tr>
+                        </table>
+                    </tr>
+                    </form>
+                        </table>
+                    </tr>
+                </table>
+                
+            </td>
+        </tr>
+    </table>
+    </center>       
+    <div class="footer"> <center> Copyright &copy; 2018. All rights reserved. 
+    Designed and developed by AnitaDM_1657051008 MayaAkhriza_1617051017 
+    ZakiatunNufus_1617051046</center></div>
+</body>
+</html>
