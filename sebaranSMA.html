@@ -4,31 +4,45 @@
         <style>
             #map {
                 background-color: gray;
-                width: 100%;
-                height: 520px;
-            }
-            .header { width:auto;
-                height: 80px;    
-              background-color:powderblue;   
-                 padding:10px;
-            }                                   
+                width: 400px;
+                height: 300px;
+            }                  
+            body{
+                background-color:#7ba9f2;
+            }           
              .footer {width:auto;                    
-   height: 10px;       
-   background-color:powderblue;              
-   color:grey;
-   padding:20px;                               
-      }                     
+                height: 10px;              
+                color:grey;   
+                                        
+            }  
+            table{
+                background-color:#aeccfc;
+                border-shadow:4px;
+                width:700px;
+                height:600px;
+            }                   
         </style>
     </head>
     <body>
-        <div class="header"> <h1><center> <img src= lambangbdl.png height= "60" width= "60">  SISTEM INFORMASI PERSEBARAN SMA NEGERI DI BANDAR LAMPUNG</center></h1></div>
-        
-        <div id="map"></div>
+    <h1><center> <img src= lambangbdl.png height= "60" width= "60">  SISTEM INFORMASI PERSEBARAN SMA NEGERI DI BANDAR LAMPUNG</center></h1></div>
+    
+    <center>
+    <table>
+        <tr>
+            <td style="text-align:center;">
+                Home<br><br>
+                View All Data<br><br>
+                View Data Kategori 1<br><br>
+                View Data Kategori 2
+            </td>
+            <td style="background-color:white ">
+                <div id="map" ></div>
+            </td>
+        </tr>
+    </table>
+</center>       
+    <div class="footer"> <center> Copyright &copy; 2018. All rights reserved. Designed and developed by AnitaDM_1657051008 MayaAkhriza_1617051017 ZakiatunNufus_1617051046</center></div>
 
-        <div class="footer"> <center> Copyright &copy; 2018. All rights reserved. Designed and developed by AnitaDM_1657051008 MayaAkhriza_1617051017 ZakiatunNufus_1617051046</center></div>
-
-
-                    
     </body>
     <script>
 function initMap() {
@@ -110,6 +124,6 @@ google.maps.event.addDomListener(window, "load", initMap);
 <script async defer 
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdEvANsvtDqx6CCytN9L3zkFR6cx4yp6A
 &callback=initMap"></script>
-<script src="src/markerclusterer.js">
+<script src="markerclusterer.js">
 </script>
 </html>
