@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PRAKTIKUM_SIG_POLYGON</title>
+
+    <style>
+        #map{
+            height: 600px;
+            width: 100%;
+            background: rgb(255, 255, 255);
+        }
+        #save{
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<!--AnitaDwiMaharani-1657051008_MayaAkhriza-1617051017_ZakiatunNufus_1617051046-->
+<body>
+    <div id="map"></div>
+    
+    <button type="button" id="save">Submit To Firebase</button>
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+<script>
+
+ var config = {
+    apiKey: "AIzaSyBekvsp1D6yATTefShHZm1QQ8tkt33hbcQ",
+    authDomain: "projekgis-12267.firebaseapp.com",
+    databaseURL: "https://projekgis-12267.firebaseio.com",
+    projectId: "projekgis-12267",
+    storageBucket: "",
+    messagingSenderId: "113242337726"
+  };
+  firebase.initializeApp(config);
+
+var db              = firebase.database();
+var dataRef         = db.ref('smabdl');
+var newPolygon      = null;
+var arrayPolygon    = [];
+var map             = null;
+var coords          = [];
+var markers         = [];
+var center          = {lat:-5.367284, lng:105.244935};
+dataRef.on('value', updateInfo, showErr); 
+function initMap(){
+    map=new google.maps.Map(document.getElementById('map'),{
+        zoom:11,
+        center:center
+    });
+    map.addListener('click', function (e) {
+        var latLng = e.latLng;
+        coords.push({lat: latLng.lat(), lng: latLng.lng()});
+        markers.push(createMarker({lat: latLng.lat(), lng: latLng.lng()}));
+    });
+}
+function createMarker(coord){
+    var marker = new google.maps.Marker(
+        {
+            position:coord,
+            map: map
+        }
+    );
+    return marker;
+}
+document.getElementById("save").addEventListener("click",function(){
+    var lines = {points:coords};
+    arrayPolygon.forEach(function(data) {
+        data.setMap(null);
+    });
+    markers.forEach(function(data){
+        data.setMap(null);
+    });
+    dataRef.push(
+        {
+            type: 'polyline',
+            geometry: lines,
+            info : 'unila'
+        }
+    );
+    coords = [];
+});
+function updateInfo(data){
+    data.forEach(function(datamarker) {
+        arrayPolygon.push(createPolygon(datamarker.val().geometry.points));
+    });
+}
+function showErr(err){
+    console.log(err);
+}
+function createPolygon(coord){
+    var tempPoly = new google.maps.Polygon({
+        paths: coord,
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 1,
+        fillColor: '#ffbae1',
+        fillOpacity: 0.35
+    });
+    tempPoly.setMap(map);
+    return tempPoly;
+}
+function updateInfo(data){
+    data.forEach(function(datamarker) {
+        arrayPolygon.push(createPolygon(datamarker.val().geometry.points));
+    });
+}
+function showErr(err){
+    console.log(err);
+}
+dataRef.push(
+            {
+                type: 'polyline',
+                geometry: lines,
+                info:'Unila'
+            });
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBekvsp1D6yATTefShHZm1QQ8tkt33hbcQ&callback=initMap"></script>
+</body>
+
+</html>
