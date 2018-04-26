@@ -4,71 +4,30 @@
         <style>
             #map {
                 background-color: gray;
-                width: 400px;
-                height: 300px;
-            }                  
-            body{    
-                background-color:#7ba9f2;
-            }           
-             .footer {width:auto;                    
-                height: 10px;              
-                color:grey;   
-                                        
-            }  
-            table{
-                background-color:#aeccfc;
-                width:850px;
-                height:600px;
-            }                   
-
-* {margin:0; padding:0;}
- 
- nav {
- margin:auto;
- text-align: center;
- width: 300px;
- font-family: arial;
- } 
-
- nav ul li{
- float:vertical;
- }
-
- nav ul li:hover{
- background:#d68d9a;
- }
-
- nav ul li a{
- display: block;
- padding: 25px;
- color:black;
- text-decoration: none;}
+                width: 100%;
+                height: 520px;
+            }
+            .header { width:auto;
+                height: 80px;
+              background-color:pink;
+                 padding:10px;
+             }    
+             .footer {width:auto;
+   height: 10px;
+   background-color:pink;
+   color:grey;
+   padding:20px;
+      }
         </style>
-
     </head>
     <body>
-    <h1><center> <img src= lambangbdl.png height= "60" width= "60">  SISTEM INFORMASI PERSEBARAN SMA NEGERI DI BANDAR LAMPUNG</center></h1></div>
-    
-    <center>
-    <table>
-        <tr>
-            <td style="text-align:center;">
-                    <nav>
-                            <ul>
-                               <li><a href="">Home</a></li>
-                               <li><a href="">View All Data</a></li>
-                               <li><a href="">View Data Kategori 1</a></li>
-                               <li><a href="">View Data Kategori 2</a></li>
-                            </ul>
-                        </nav>
-            </td>
-            <td style="background-color:white; padding:5px; ">
-                <div id="map" ></div>
-            </td>
-        </tr>
-    </table>
-</center>       
-    <div class="footer"> <center> Copyright &copy; 2018. All rights reserved. Designed and developed by AnitaDM_1657051008 MayaAkhriza_1617051017 ZakiatunNufus_1617051046</center></div>
+        <div class="header"> <h1><center> <img src= lambangbdl.png height= "60" width= "60">  SISTEM INFORMASI PERSEBARAN SMA NEGERI DI BANDAR LAMPUNG</center></h1></div>
+        
+        <div id="map"></div>
+
+        <div class="footer"> <center> Copyright &copy; 2018. All rights reserved. Designed and developed by AnitaDM_1657051008 MayaAkhriza_1617051017 ZakiatunNufus_1617051046</center></div>
+
+
 
     </body>
     <script>
@@ -148,9 +107,7 @@ google.maps.event.addDomListener(window, "load", initMap);
 
    </script>
 
-<script async defer 
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdEvANsvtDqx6CCytN9L3zkFR6cx4yp6A
-&callback=initMap"></script>
-<script src="markerclusterer.js">
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqIy-vX5tDUpnN5EUuIVG5fNeEuHWm3q4&callback=initMap"></script>
+<script src="src/markerclusterer.js">
 </script>
 </html>
