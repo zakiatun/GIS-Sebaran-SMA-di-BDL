@@ -8,39 +8,106 @@
     <link rel="stylesheet" type="text/css" href="desain.css"/>
 </head>
 
-<body>
+<body>      
+      <div class="container-fluid"></div>
         <div class="header"> <h1><center> <img src= lambangbdl.png height= "60" width= "60">  SISTEM INFORMASI PERSEBARAN SMA/SEDERAJAT DI BANDAR LAMPUNG</center></h1></div>
-        <div class="navbar">
-        <a href="main.html">Home</a>
-        <div class="dropdown">
-            <button class="dropbtn">STATUS
-            <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                    <a href='https://anitadmhrn.000webhostapp.com/
-                    /proyek_sebaranSMA.html'>NEGERI</a>
-                    <a>SWASTA</a>
-                    </div>
+
+        
+      <div class="container">
+      </div>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="main.html">Home</a>
+            <button class="dropdown-btn">Status
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-container">
+                    <a href="2nd.html">Negeri</a>
+                    <a href="#">Swasta</a>
+                  </div>
+            <button class="dropdown-btn">Jenjang Pendidikan
+                        <i class="fa fa-caret-down"></i>
+                      </button>
+                      <div class="dropdown-container">
+                        <a href="2nd.html">SMA</a>
+                        <a href="#">MA</a>
+                        <a href="#">SMK</a>
+            </div>
+          </div>
+
+          <script>
+                /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+                var dropdown = document.getElementsByClassName("dropdown-btn");
+                var i;
+                
+                for (i = 0; i < dropdown.length; i++) {
+                  dropdown[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var dropdownContent = this.nextElementSibling;
+                    if (dropdownContent.style.display === "block") {
+                      dropdownContent.style.display = "none";
+                    } else {
+                      dropdownContent.style.display = "block";
+                    }
+                  });
+                }
+                </script>
+
+
+
+
+          
+          <div id="main">
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
             
-        </div> 
-        <div class="dropdown">
-            <button class="dropbtn">AKREDITASI
-            <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                    <a>A</a>
-                    <a>B</a>
-                    <a>C</a>
-                    </div> 
-        </div> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+       <br><br>
+      <div class="container">
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">Peta Sebaran</div>
+            <div class="panel-body">
+                <div id="map"></div></div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">Panel Header</div>
+            <div class="panel-body">Panel Content</div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">Panel Header</div>
+            <div class="panel-body">Panel Content</div>
+          </div>
         </div>
+      </div>
+      
+
+          </div>
+          
+          <script>
+          function openNav() {
+              document.getElementById("mySidenav").style.width = "250px";
+              document.getElementById("main").style.marginLeft = "250px";
+          }
+          
+          function closeNav() {
+              document.getElementById("mySidenav").style.width = "0";
+              document.getElementById("main").style.marginLeft= "0";
+          }
+          </script>
+
 
 
 
 
         <script src="http://maps.googleapis.com/maps/api/js"></script>
-        <div id="map"></div>
+
         <div class="footer"> <center> Copyright &copy; 2018. All rights reserved. Designed and developed by AnitaDM_1657051008 MayaAkhriza_1617051017 ZakiatunNufus_1617051046</center></div>
+    </div>
+
         <script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzBRoK9MROy_hYCD1phgv9xDczjv2VRlI&callback=initMap"></script>
     <script>
