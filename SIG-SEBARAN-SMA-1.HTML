@@ -1,0 +1,122 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width"> 
+  <title>Sistem Informasi Sebaran SMA/Sederajat di Bandar Lampung</title> 
+  <link rel="stylesheet" type="text/css" href="desain.css">
+</head>
+
+<body>
+    <div class="header"> <h1><center> <img src= "osis.png" height= "70" width= "60">  SISTEM INFORMASI SEBARAN SMA/SEDERAJAT DI BANDAR LAMPUNG</center></h1></div>
+    <div class="navbar">
+        <div class="dropdown">
+            <button class="dropbtn">HOME<i class="fa fa-caret-down"></i></button>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">STATUS<i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-content">
+                <a href="#">NEGERI</a>
+                <a href="#">SWASTA</a>
+            </div>
+        </div> 
+        <div class="dropdown">
+            <button class="dropbtn">AKREDITASI<i class="fa fa-caret-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="#">A</a>
+                    <a href="#">B</a>
+                    <a href="#">C</a>
+                </div>
+        </div> 
+        <div class="dropdown">
+            <button class="dropbtn">SMA/SMK/MA<i class="fa fa-caret-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="#">SMA</a>
+                    <a href="#">SMK</a>
+                    <a href="#">MA</a>
+                </div>
+        </div> 
+    </div>
+    <div id="map"></div>
+    <div class="footer"> <center> Copyright &copy; 2018. All rights reserved. Designed and developed by AnitaDM_1657051008 MayaAkhriza_1617051017 ZakiatunNufus_1617051046</center></div>
+</body>
+
+<script>
+    function initMap() {
+        var lampung = {lat: -4.558585, lng: 105.406808};
+                var map=new google.maps.Map(document.getElementById('map'),{zoom:8,center:lampung});
+                console.log(map);
+                var infowindow = new google.maps.InfoWindow();
+                var contentString = '<h3>PROVINSI LAMPUNG</h3><hr>'+
+                                     '<h5> Luas 34.623,80 km2 dan jumlah penduduk 9.543.231 Jiwa</hr5>';
+                infowindow.setContent(contentString);
+       
+       var marker=new google.maps.Marker({position:lampung,map:map});
+                marker.addListener('click',function(){
+                    infowindow.open(map,marker);
+                });
+    
+      var infoWin = new google.maps.InfoWindow();
+    
+      var markers = locations.map(function(location, i) {
+        var marker = new google.maps.Marker({
+          position: location
+        });
+        google.maps.event.addListener(marker, 'click', function(evt) {
+          infoWin.setContent(location.info);
+          infoWin.open(map, marker);
+        })
+        return marker;
+      });
+    
+      // Add a marker clusterer to manage the markers.
+      var markerCluster = new MarkerClusterer(map, markers, {
+        imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+      });
+    
+    }
+    var locations =  
+    [  	{lat: -5.397140, lng: 105.266789,
+         info: "<h2>BANDAR LAMPUNG </h2> <hr>"+"<h3>Luas Bandar Lampung 169,21 km² dan Jumlah penduduk 1.166.761 jiwa</h3>"},
+        {lat:-5.422571, lng: 105.265161,
+        info: "<h2>SMAN 1 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan Jenderal Sudirman No.41, Rawa Laut, Tanjung Karang Timur, Engal, Rw. Laut, Engal, Kota Bandar Lampung, Lampung 35213 </h3><hr>"+"<a href='http://smansa-bdl.sch.id' target='blank'>smansa-bdl.sch.id</a>" },
+        {lat: -5.427049, lng: 105.254837,
+        info: "<h2>SMAN 2 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan Amir Hamzah No. 1, Gotong Royong, Tanjung Karang Pusat, Gotong Royong, Tj. Karang Pusat, Kota Bandar Lampung, Lampung 35119 </h3><hr>"+"<a href='http://smanda-bdl.sch.id<' target='blank'>smanda-bdl.sch.id</a>"}, 
+        {lat: -5.419214, lng: 105.244381,
+        info: "<h2>SMAN 3 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan Khairil Anwar No.30, Durian Payung, Tanjung Karang Pusat, Durian Payung, Tj. Karang Pusat, Kota Bandar Lampung, Lampung 35214 </h3><hr>"+"(0721) 255600"},
+        {lat: -5.435694, lng: 105.270253,
+        info: "<h2>SMAN 4 BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Dr. Cipto Mangunkusumo, No 88, Teluk Betung, Kupang Teba, Tlk. Betung Utara, Kota Bandar Lampung, Lampung 35228 </h3><hr>"+"(0721) 481121"},
+        {lat: -5.378912, lng: 105.284764,
+        info: "<h2>SMAN 5 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan Soekarno Hatta, Way Dadi, Sukarame, Way Dadi, Sukarame, Kota Bandar Lampung, Lampung 35132 </h3><hr>"+"<a href='http://sman5-bdl.sch.id<' target='blank'>sman5-bdl.sch.id</a>"},
+        {lat: -5.438214, lng: 105.296496,
+        info: "<h2>SMAN 6 BANDAR LAMPUNG</h2><hr>"+"<h3>  Jl. KH. Agus Anang No.35, Ketapang, Tlk. Betung Sel., Kota Bandar Lampung, Lampung 35245 </h3><hr>"+"(0721) 3338"},
+        {lat: -5.404216, lng: 105.201355,
+        info: "<h2>SMAN 7 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan Teuku Cik Ditro No.2, Beringin Raya, Kemiling, Beringin Raya, Kemiling, Kota Bandar Lampung, Lampung 35158 </h3><hr>"+"(0721) 540270"},
+        {lat: -5.449391, lng: 105.257924,
+        info: "<h2>SMAN 8 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan LAKSAMANA MALAHAYATI No.10, Talang, Teluk Betung Selatan, Talang, Tlk. Betung Sel., Bandar Lampung, Lampung 35229 </h3><hr>"+"(0721) 484453"},
+        {lat: -5.389186, lng: 105.249201,
+        info: "<h2>SMAN 9 BANDAR LAMPUNG</h2><hr>"+"<h3>  Jalan Panglima Polim No.18, Segala Mider, Tanjung Karang Barat, Segala Mider, Tj. Karang Bar., Kota Bandar Lampung, Lampung 35152 </h3><hr>"+"<a href='http://smalan.sch.id<' target='blank'>smalan.sch.id</a>"},
+        {lat: -5.428743, lng: 105.275725,
+        info: "<h2>SMAN 10 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan sman 10: Jalan GATOT SUBROTO No.81, Tanjung Gading, North Teluk Betung, Kedamaian, Tj. Gading, Kedamaian, Kota Bandar Lampung, Lampung 35226 </h3><hr>"+"<a href='http://sman10bdl.sch.id<' target='blank'>sman10bdl.sch.id</a>"},
+        {lat: -5.472951, lng: 105.243144,
+        info: "<h2>SMAN 11 BANDAR LAMPUNG</h2><hr>"+"<h3> JL. RE. Martadinata, Perwata, Tlk. Betung Tim., Kota Bandar Lampung, Lampung 35231 </h3><hr>"+"<a href='http://sman11bandarlampung.sch.id' target='blank'>sman11bandarlampung.sch.id</a>"},
+        {lat: -5.375898, lng: 105.311003,
+        info: "<h2>SMAN 12 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan Haji Endro Suratmin, Sukarame, Kota Bandar Lampung, Lampung 35131 </h3><hr>"+"<a href='http://sman12bdl.sch.id' target='blank'>sman12bdl.sch.id</a>"},
+        {lat: -5.346666, lng: 105.256170,
+        info: "<h2>SMAN 13 BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Padat Karya, Sinar Harapan, Rajabasa Jaya, Rajabasa, Kota  Bandar Lampung, Lampung 35141 </h3><hr>"+"0813-8379-0139"},
+        {lat: -5.379955, lng: 105.212618,
+        info: "<h2>SMAN 14 BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Perum Bukit Kemiling Permai, Kemiling Permai, Kemiling,  Kota Bandar Lampung, Lampung 35152 </h3><hr>"+"<a href='http://sman14bl.sch.id' target='blank'>sman14bl.sch.id</a>"},
+        {lat: -5.360553, lng: 105.267474,
+        info: "<h2>SMAN 15 BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Turi Raya, Labuhan Dalam, Tj. Senang, Kota Bandar Lampung, Lampung 35141 </h3><hr>"+"<a href='http://sman15-bdl.sch.id' target='blank'>sman15-bdl.sch.id</a>"},
+        {lat: -5.402855, lng: 105.229122,
+        info: "<h2>SMAN 16 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan DARUSSALAM, Susunan Baru, Tanjung Karang, Langkapura,  Kota Bandar Lampung, Lampung 35111 </h3><hr>"+"<a href='http://sman16-bdl.sch.id' target='blank'>sman16-bdl.sch.id</a>"},
+        {lat: -5.463311, lng: 105.324735,
+        info: "<h2>SMAN 17 BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Soekarno - Hatta, Pidada, Panjang, Kota Bandar Lampung,  Lampung 35241 </h3><hr>"+"<a href='http://sman17bdl.sch.id' target='blank'>sman17bdl.sch.id</a>"},];
+        
+    google.maps.event.addDomListener(window, "load", initMap);
+    
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqIy-vX5tDUpnN5EUuIVG5fNeEuHWm3q4&callback=initMap"></script>
+<script src="src/markerclusterer.js">
+</script>
+</html>
