@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="desain.css"/>
+</head>
+
+<body>
+        <div class="header"> <h1><center> <img src= lambangbdl.png height= "60" width= "60">  SISTEM INFORMASI PERSEBARAN SMA/SEDERAJAT DI BANDAR LAMPUNG</center></h1></div>
+        <div class="navbar">
+        <a href="geojson.html">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">STATUS
+            <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                    <a href='https://anitadmhrn.000webhostapp.com/20180426/proyek_sebaranSMA.html'>NEGERI</a>
+                    <a>SWASTA</a>
+             </div>
+        </div> 
+        <div class="dropdown">
+            <button class="dropbtn">AKREDITASI
+            <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                    <a>A</a>
+                    <a>B</a>
+                    <a>C</a>
+                    </div>
+            
+            </div> 
+        </div>
+
+    <div id="map"></div>
+    <div class="footer"> <center> Copyright &copy; 2018. All rights reserved. Designed and developed by AnitaDM_1657051008 MayaAkhriza_1617051017 ZakiatunNufus_1617051046</center></div>
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCL7TO1_Uha4scXtezhePh-sGsxASJ8YVM&callback=initMap"></script>
+    <script>
+        // Initialize Firebase
+        var center = {lat:-5.42544, lng:105.25803};
+        var map = null;
+        var config = {
+            apiKey: "AIzaSyATKrdaGQPHxiptfNJkjf-Wtw5g9jhMWX8",
+            authDomain: "sebaran-sma.firebaseapp.com",
+            databaseURL: "https://sebaran-sma.firebaseio.com",
+            projectId: "sebaran-sma",
+            storageBucket: "sebaran-sma.appspot.com",
+            messagingSenderId: "676661598886"
+        };
+        firebase.initializeApp(config);
+
+        var db = firebase.database();
+        var dataRef = db.ref('sma');
+        var infowindow;
+        dataRef.on('value', showData, showError)
+
+        function showData(data){
+            //console.log(data.val());
+            map.data.addGeoJson(data.val());
+            map.data.setStyle({
+                fillColor: 'green',
+                strokeWeight :0.3,
+            });
+            map.data.addListener('click', function(event){
+                infowindowcontent = event.feature.getProperty('KECAMATAN');
+                infowindow.setContent(infowindowcontent);
+                infowindow.setPosition(event.latLng);
+                infowindow.open(map);
+                console.log(infowindow)
+            });
+        }
+        function showError(err){
+            console.log(err);
+        }
+        function initMap(){
+            map = new google.maps.Map(document.getElementById('map'),{
+                zoom : 12,
+                center : center,
+            });
+            infowindow = new google.maps.InfoWindow();
+        }
+    </script>
+</body>
+</html>

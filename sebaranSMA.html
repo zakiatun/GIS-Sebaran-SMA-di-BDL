@@ -40,7 +40,8 @@ function initMap() {
                                  '<h5> Luas 34.623,80 km2 dan jumlah penduduk 9.543.231 Jiwa</hr5>';
             infowindow.setContent(contentString);
    
-   var marker=new google.maps.Marker({position:lampung,map:map});
+   var marker=new google.maps.Marker({position:lampung,
+   map:map});
             marker.addListener('click',function(){
                 infowindow.open(map,marker);
             });

