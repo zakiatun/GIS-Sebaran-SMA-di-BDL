@@ -1,0 +1,108 @@
+
+#map {
+  height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#floating-panel {
+  position: absolute;
+  top: 10px;
+  left: 25%;
+  z-index: 5;
+  background-color: white;
+  padding: 5px;
+  border: 1px solid powderblue;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+  font-size: 14px;
+  box-shadow: 0 2px 2px rgba(170, 92, 92, 0.4);
+  display: none;
+}
+#left-panel {
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+#left-panel select, #left-panel input {
+  font-size: 15px;
+}
+
+#left-panel select {
+  width: 100%;
+}
+
+#left-panel i {
+  font-size: 12px;
+}
+#left-panel {
+  height: 100%;
+  float: left;
+  width: 390px;
+  overflow: auto;
+}
+/*#map {
+  margin-left: 400px;
+}
+*/
+@media print {
+  #map {
+    height: 500px;
+    margin: 0;
+  }
+  #left-panel {
+    float: none;
+    width: auto;
+  }
+}
+#floating-panell {
+  position:left;
+  top: 10px;
+  left: 25%;
+  z-index: 5;
+  background-color:palegoldenrod;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+.footer {
+          width:auto;
+          height: 10px;
+          background-color:darkcyan;
+          color:white;
+          padding:20px;
+}
+
+/*find*/
+.controls {
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+#searchInput {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 50%;
+}
+#searchInput:focus {
+    border-color: #4d90fe;
+}

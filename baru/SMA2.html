@@ -67,20 +67,55 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
            <br><br>
-          <div class="container">
+           <div class="container">
+                <div class="panel-group" >
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Filter</div>
+                        <div class="panel-body"style="background:powderblue";>
+                                <div class="dropdown">
+                                        <button onclick="myFunction()" class="dropdown-btn">Cari SMA</button>
+                                          <div id="myDropdown" class="dropdown-content">
+                                            <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                                            <a href="SMA1.html">SMAN 1 Bandar Lampung</a>
+                                            <a href="SMA2.html">SMAN 2 Bandar Lampung</a>
+                                            <a href="#blog">SMAN 3 Bandar Lampung</a>
+                                            <a href="#contact">SMAN 4 Bandar Lampung</a>
+                                            <a href="#custom">SMAN 5 Bandar Lampung</a>
+                                            <a href="#support">SMAN 6 Bandar Lampung</a>
+                                            <a href="#tools">SMAN 7 Bandar Lampung</a>
+                                          </div>
+                                </div>
+                                        
+                                        <script>
+                                        /* When the user clicks on the button,
+                                        toggle between hiding and showing the dropdown content */
+                                        function myFunction() {
+                                            document.getElementById("myDropdown").classList.toggle("show");
+                                        }
+                                        
+                                        function filterFunction() {
+                                            var input, filter, ul, li, a, i;
+                                            input = document.getElementById("myInput");
+                                            filter = input.value.toUpperCase();
+                                            div = document.getElementById("myDropdown");
+                                            a = div.getElementsByTagName("a");
+                                            for (i = 0; i < a.length; i++) {
+                                                if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                                    a[i].style.display = "";
+                                                } else {
+                                                    a[i].style.display = "none";
+                                                }
+                                            }
+                                        }
+                                        </script>
+                            </div>
+                    </div>
+
             <div class="panel-group">
               <div class="panel panel-default">
                 <div class="panel-heading">Peta Sebaran</div>
-                <div class="panel-body">
+                <div class="panel-body"style="background:powderblue";>
                     <div id="map"></div></div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">Panel Header</div>
-                <div class="panel-body">Panel Content</div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">Panel Header</div>
-                <div class="panel-body">Panel Content</div>
               </div>
             </div>
           </div>
@@ -115,8 +150,8 @@
 
 function initialize(){
 	var mapOptions = {
-		zoom:9,
-		center: new google.maps.LatLng(-5.4284046, 105.2006967),
+		zoom:20,
+		center: new google.maps.LatLng(-5.427049, 105.254837),
 	};
 	map = new google.maps.Map(document.getElementById('map'), mapOptions);
 	
@@ -210,7 +245,7 @@ function initialize(){
 
 <script>
         var map = null;
-        var center = {lat: -5.4284046, lng:105.2006967};
+        var center = {lat: -5.427049, lng: 105.254837};
         var infowindow;
 
         var config = {
@@ -247,7 +282,7 @@ function initialize(){
         }
         function initMap(){
             map = new google.maps.Map(document.getElementById('map'),{
-                zoom: 11,
+                zoom: 20,
                 center: center
             });
             infowindow = new google.maps.InfoWindow();

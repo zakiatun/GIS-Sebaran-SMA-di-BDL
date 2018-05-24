@@ -1,0 +1,293 @@
+
+<!DOCTYPE html> 
+<html> 
+<head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>SI SEBARAN SMA/SEDERAJAT DI BANDAR LAMPUNG</title>
+        <link rel="stylesheet" type="text/css" href="desain.css"/>
+    </head>
+    
+    <body>
+            <div class="container-fluid"></div>
+            <div class="header"> <h1><center> <img src= lambangbdl.png height= "60" width= "60">  SISTEM INFORMASI PERSEBARAN SMA/SEDERAJAT DI BANDAR LAMPUNG</center></h1></div>
+    
+            
+          <div class="container">
+          </div>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="main.html">Home</a>
+                <button class="dropdown-btn">Status
+                        <i class="fa fa-caret-down"></i>
+                      </button>
+                      <div class="dropdown-container">
+                        <a href="2nd.html">Negeri</a>
+                        <a href="#">Swasta</a>
+                      </div>
+                <button class="dropdown-btn">Jenjang Pendidikan
+                            <i class="fa fa-caret-down"></i>
+                          </button>
+                          <div class="dropdown-container">
+                            <a href="2nd.html">SMA</a>
+                            <a href="#">MA</a>
+                            <a href="#">SMK</a>
+                </div>
+              </div>
+    
+              <script>
+                    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+                    var dropdown = document.getElementsByClassName("dropdown-btn");
+                    var i;
+                    
+                    for (i = 0; i < dropdown.length; i++) {
+                      dropdown[i].addEventListener("click", function() {
+                        this.classList.toggle("active");
+                        var dropdownContent = this.nextElementSibling;
+                        if (dropdownContent.style.display === "block") {
+                          dropdownContent.style.display = "none";
+                        } else {
+                          dropdownContent.style.display = "block";
+                        }
+                      });
+                    }
+                    </script>
+    
+    
+    
+    
+              
+              <div id="main">
+                <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+                
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+           <br><br>
+           <div class="container">
+                <div class="panel-group" >
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Filter</div>
+                        <div class="panel-body"style="background:powderblue";>
+                                <div class="dropdown">
+                                        <button onclick="myFunction()" class="dropdown-btn">Cari SMA</button>
+                                          <div id="myDropdown" class="dropdown-content">
+                                            <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                                            <a href="SMA1.html">SMAN 1 Bandar Lampung</a>
+                                            <a href="SMA2.html">SMAN 2 Bandar Lampung</a>
+                                            <a href="#blog">SMAN 3 Bandar Lampung</a>
+                                            <a href="#contact">SMAN 4 Bandar Lampung</a>
+                                            <a href="#custom">SMAN 5 Bandar Lampung</a>
+                                            <a href="#support">SMAN 6 Bandar Lampung</a>
+                                            <a href="#tools">SMAN 7 Bandar Lampung</a>
+                                          </div>
+                                </div>
+                                        
+                                        <script>
+                                        /* When the user clicks on the button,
+                                        toggle between hiding and showing the dropdown content */
+                                        function myFunction() {
+                                            document.getElementById("myDropdown").classList.toggle("show");
+                                        }
+                                        
+                                        function filterFunction() {
+                                            var input, filter, ul, li, a, i;
+                                            input = document.getElementById("myInput");
+                                            filter = input.value.toUpperCase();
+                                            div = document.getElementById("myDropdown");
+                                            a = div.getElementsByTagName("a");
+                                            for (i = 0; i < a.length; i++) {
+                                                if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                                    a[i].style.display = "";
+                                                } else {
+                                                    a[i].style.display = "none";
+                                                }
+                                            }
+                                        }
+                                        </script>
+                            </div>
+                    </div>
+
+            <div class="panel-group">
+              <div class="panel panel-default">
+                <div class="panel-heading">Peta Sebaran</div>
+                <div class="panel-body"style="background:powderblue";>
+                    <div id="map"></div></div>
+              </div>
+
+            </div>
+          </div>
+          
+    
+              </div>
+              
+              <script>
+              function openNav() {
+                  document.getElementById("mySidenav").style.width = "250px";
+                  document.getElementById("main").style.marginLeft = "250px";
+              }
+              
+              function closeNav() {
+                  document.getElementById("mySidenav").style.width = "0";
+                  document.getElementById("main").style.marginLeft= "0";
+              }
+              </script>
+    
+    
+    
+    
+    
+            <script src="http://maps.googleapis.com/maps/api/js"></script>
+    
+            <div class="footer"> <center> Copyright &copy; 2018. All rights reserved. Designed and developed by AnitaDM_1657051008 MayaAkhriza_1617051017 ZakiatunNufus_1617051046</center></div>
+        </div>
+    
+            <script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzBRoK9MROy_hYCD1phgv9xDczjv2VRlI&callback=initMap"></script>
+<script>
+
+function initialize(){
+	var mapOptions = {
+		zoom:20,
+		center: new google.maps.LatLng(-5.422571, 105.265161),
+	};
+	map = new google.maps.Map(document.getElementById('map'), mapOptions);
+	
+	infoWindow = new google.maps.InfoWindow();
+	var infowindow = new google.maps.InfoWindow();
+	
+	var contentString;
+	infowindow.setContent(contentString);
+  
+	var marker = new google.maps.Marker();
+	marker.addListener('click',function(){
+		infowindow.open(map,marker);
+  ``});
+	marker.setMap(map);
+	
+	var infoWin = new google.maps.InfoWindow();
+    var labels = 'Bandar Lampung';
+        
+    var markers = locations.map(function(location, i) {
+        var marker = new google.maps.Marker({
+            position: location,
+            label: labels[i % labels.length]
+        });
+		google.maps.event.addListener(marker, 'click', function(evt) {
+			infoWin.setContent(location.info);
+			infoWin.open(map, marker);
+		})
+		return marker;
+    }); 
+    
+	console.log(locations);
+    console.log(markers);
+
+    var markerCluster = new MarkerClusterer(map, markers,
+        {imagePath: 'images/m'});
+        
+    var d = markerCluster.distanceBetweenPoints_(markers[2].getPosition(),markers[4].getPosition());
+    console.log(markerCluster.getCalculator());
+
+    }
+	
+	function showArrays(event) {
+		var vertices = this.getPath();
+		var contentString = '<b>' + this.name + '</b>';
+		infoWindow.setPosition(event.latLng);
+		infoWindow.setContent(contentString);
+		infoWindow.open(map);
+	}
+	google.maps.event.addDomListener(window, 'load', initialize);
+
+     var locations =
+     [  	{lat: -5.397140, lng: 105.266789,
+	 info: "<h2>BANDAR LAMPUNG </h2> <hr>"+"<h3>Luas Bandar Lampung 169,21 km² dan Jumlah penduduk 1.166.761 jiwa</h3>"},
+    {lat:-5.422571, lng: 105.265161,
+    info: "<h2>SMAN 1 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan Jenderal Sudirman No.41, Rawa Laut, Tanjung Karang Timur, Engal, Rw. Laut, Engal, Kota Bandar Lampung, Lampung 35213 </h3><hr>"+"<a href='http://smansa-bdl.sch.id' target='blank'>smansa-bdl.sch.id</a>" },
+    {lat: -5.427049, lng: 105.254837,
+    info: "<h2>SMAN 2 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan Amir Hamzah No. 1, Gotong Royong, Tanjung Karang Pusat, Gotong Royong, Tj. Karang Pusat, Kota Bandar Lampung, Lampung 35119 </h3><hr>"+"<a href='http://smanda-bdl.sch.id<' target='blank'>smanda-bdl.sch.id</a>"}, 
+    {lat: -5.419214, lng: 105.244381,
+    info: "<h2>SMAN 3 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan Khairil Anwar No.30, Durian Payung, Tanjung Karang Pusat, Durian Payung, Tj. Karang Pusat, Kota Bandar Lampung, Lampung 35214 </h3><hr>"+"(0721) 255600"},
+    {lat: -5.435694, lng: 105.270253,
+    info: "<h2>SMAN 4 BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Dr. Cipto Mangunkusumo, No 88, Teluk Betung, Kupang Teba, Tlk. Betung Utara, Kota Bandar Lampung, Lampung 35228 </h3><hr>"+"(0721) 481121"},
+    {lat: -5.378912, lng: 105.284764,
+    info: "<h2>SMAN 5 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan Soekarno Hatta, Way Dadi, Sukarame, Way Dadi, Sukarame, Kota Bandar Lampung, Lampung 35132 </h3><hr>"+"<a href='http://sman5-bdl.sch.id<' target='blank'>sman5-bdl.sch.id</a>"},
+	{lat: -5.438214, lng: 105.296496,
+    info: "<h2>SMAN 6 BANDAR LAMPUNG</h2><hr>"+"<h3>  Jl. KH. Agus Anang No.35, Ketapang, Tlk. Betung Sel., Kota Bandar Lampung, Lampung 35245 </h3><hr>"+"(0721) 3338"},
+    {lat: -5.404216, lng: 105.201355,
+    info: "<h2>SMAN 7 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan Teuku Cik Ditro No.2, Beringin Raya, Kemiling, Beringin Raya, Kemiling, Kota Bandar Lampung, Lampung 35158 </h3><hr>"+"(0721) 540270"},
+    {lat: -5.449391, lng: 105.257924,
+    info: "<h2>SMAN 8 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan LAKSAMANA MALAHAYATI No.10, Talang, Teluk Betung Selatan, Talang, Tlk. Betung Sel., Bandar Lampung, Lampung 35229 </h3><hr>"+"(0721) 484453"},
+    {lat: -5.389186, lng: 105.249201,
+    info: "<h2>SMAN 9 BANDAR LAMPUNG</h2><hr>"+"<h3>  Jalan Panglima Polim No.18, Segala Mider, Tanjung Karang Barat, Segala Mider, Tj. Karang Bar., Kota Bandar Lampung, Lampung 35152 </h3><hr>"+"<a href='http://smalan.sch.id<' target='blank'>smalan.sch.id</a>"},
+    {lat: -5.428743, lng: 105.275725,
+    info: "<h2>SMAN 10 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan sman 10: Jalan GATOT SUBROTO No.81, Tanjung Gading, North Teluk Betung, Kedamaian, Tj. Gading, Kedamaian, Kota Bandar Lampung, Lampung 35226 </h3><hr>"+"<a href='http://sman10bdl.sch.id<' target='blank'>sman10bdl.sch.id</a>"},
+	{lat: -5.472951, lng: 105.243144,
+    info: "<h2>SMAN 11 BANDAR LAMPUNG</h2><hr>"+"<h3> JL. RE. Martadinata, Perwata, Tlk. Betung Tim., Kota Bandar Lampung, Lampung 35231 </h3><hr>"+"<a href='http://sman11bandarlampung.sch.id' target='blank'>sman11bandarlampung.sch.id</a>"},
+	{lat: -5.375898, lng: 105.311003,
+    info: "<h2>SMAN 12 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan Haji Endro Suratmin, Sukarame, Kota Bandar Lampung, Lampung 35131 </h3><hr>"+"<a href='http://sman12bdl.sch.id' target='blank'>sman12bdl.sch.id</a>"},
+	{lat: -5.346666, lng: 105.256170,
+    info: "<h2>SMAN 13 BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Padat Karya, Sinar Harapan, Rajabasa Jaya, Rajabasa, Kota  Bandar Lampung, Lampung 35141 </h3><hr>"+"0813-8379-0139"},
+	{lat: -5.379955, lng: 105.212618,
+    info: "<h2>SMAN 14 BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Perum Bukit Kemiling Permai, Kemiling Permai, Kemiling,  Kota Bandar Lampung, Lampung 35152 </h3><hr>"+"<a href='http://sman14bl.sch.id' target='blank'>sman14bl.sch.id</a>"},
+	{lat: -5.360553, lng: 105.267474,
+    info: "<h2>SMAN 15 BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Turi Raya, Labuhan Dalam, Tj. Senang, Kota Bandar Lampung, Lampung 35141 </h3><hr>"+"<a href='http://sman15-bdl.sch.id' target='blank'>sman15-bdl.sch.id</a>"},
+	{lat: -5.402855, lng: 105.229122,
+    info: "<h2>SMAN 16 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan DARUSSALAM, Susunan Baru, Tanjung Karang, Langkapura,  Kota Bandar Lampung, Lampung 35111 </h3><hr>"+"<a href='http://sman16-bdl.sch.id' target='blank'>sman16-bdl.sch.id</a>"},
+	{lat: -5.463311, lng: 105.324735,
+    info: "<h2>SMAN 17 BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Soekarno - Hatta, Pidada, Panjang, Kota Bandar Lampung,  Lampung 35241 </h3><hr>"+"<a href='http://sman17bdl.sch.id' target='blank'>sman17bdl.sch.id</a>"},];
+</script>
+
+
+
+<script>
+        var map = null;
+        var center = {lat:-5.422571, lng: 105.265161};
+        var infowindow;
+
+        var config = {
+            apiKey: "AIzaSyATKrdaGQPHxiptfNJkjf-Wtw5g9jhMWX8",
+            authDomain: "sebaran-sma.firebaseapp.com",
+            databaseURL: "https://sebaran-sma.firebaseio.com",
+            projectId: "sebaran-sma",
+            storageBucket: "sebaran-sma.appspot.com",
+            messagingSenderId: "676661598886"
+        };
+        firebase.initializeApp(config);
+
+        var db = firebase.database();
+        var dataRef = db.ref('geojson/bdl')
+
+        dataRef.on('value', showData, showError);
+        function showData(data){
+            //console.log(data.val());
+            map.data.addGeoJson(data.val()); 
+            map.data.setStyle({
+                fillColor :'green',
+                strokeWeight: 0.2
+            });
+            map.data.addListener('click', function(event){
+                infoWindowContent = event.feature.getProperty('DESA')+"<br>"+event.feature.getProperty('KECAMATAN');
+                infowindow.setContent(infoWindowContent);
+                infowindow.setPosition(event.latLng);
+                infowindow.open(map);
+        
+            });
+        }
+        function showError(err){
+            console.log(err);
+        }
+        function initMap(){
+            map = new google.maps.Map(document.getElementById('map'),{
+                zoom: 20,
+                center: center
+            });
+            infowindow = new google.maps.InfoWindow();
+        }
+    </script>
+<script src="markerclusterer.js"></script>
+</html>

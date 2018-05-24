@@ -1,0 +1,139 @@
+
+.btn1 {
+    color: black;
+}
+
+.sidebar {
+    float: left;
+    overflow: hidden;
+}
+
+.sidebar a.active {
+    color: white;
+    float: left;
+    font-size: 16px;
+    text-align: center;
+    padding: 20px 16px;
+    text-decoration: none
+  }
+
+  .s1 {
+    float: left;
+    overflow: hidden;
+}
+.s2 {
+    float: left;
+    overflow: hidden;
+}
+.s3 {
+    float: left;
+    overflow: hidden;
+}
+
+.s1 .btn1 {
+    font-size: 16px;    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 20px 30px;
+    background-color: inherit;
+    font: inherit;
+}
+.s2 .btn2 {
+    font-size: 16px;    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 20px 30px;
+    background-color: inherit;
+    font: inherit;
+}
+.s3 .btn3 {
+    font-size: 16px;    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 20px 30px;
+    background-color: inherit;
+    font: inherit;
+}
+.sidebar a:hover, .s1:hover .btn1 {
+    background-color: white;
+    color: darkcyan;
+}
+
+.sidebar a:hover, .s2:hover .btn2 {
+    background-color: white;
+    color:darkcyan;
+}
+
+.sidebar a:hover, .s3:hover .btn3 {
+    background-color: white;
+    color:darkcyan;
+}
+
+.sidebar3 {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 100%;
+    left: 0;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.sidebar4 {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 100%;
+    left: 0;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.sidebar5 {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 100%;
+    left: 0;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.s1:hover .sidebar3 {
+    display: block;
+}
+
+.s2:hover .sidebar4 {
+    display: block;
+}
+.s3:hover .sidebar5 {
+    display: block;
+}
+
+.sidebar3 a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.sidebar4 a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.sidebar5 a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
