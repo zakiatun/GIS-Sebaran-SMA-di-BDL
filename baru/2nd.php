@@ -118,8 +118,31 @@ function initialize(){
 	{lat: -5.402855, lng: 105.229122,
     info: "<h2>SMAN 16 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan DARUSSALAM, Susunan Baru, Tanjung Karang, Langkapura,  Kota Bandar Lampung, Lampung 35111 </h3><hr>"+"<a href='http://sman16-bdl.sch.id' target='blank'>sman16-bdl.sch.id</a>"},
 	{lat: -5.463311, lng: 105.324735,
-    info: "<h2>SMAN 17 BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Soekarno - Hatta, Pidada, Panjang, Kota Bandar Lampung,  Lampung 35241 </h3><hr>"+"<a href='http://sman17bdl.sch.id' target='blank'>sman17bdl.sch.id</a>"},];
-</script>
+    info: "<h2>SMAN 17 BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Soekarno - Hatta, Pidada, Panjang, Kota Bandar Lampung,  Lampung 35241 </h3><hr>"+"<a href='http://sman17bdl.sch.id' target='blank'>sman17bdl.sch.id</a>"},
+	{lat: -5.393935, lng: 105.279480,
+    info: "<h2>SMK NEGERI 1 BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. P. Morotai No.33 Jagabaya III, Sukabumi, Way Halim, Kota Bandar Lampung 35132 </h3><hr>"+" 0721-705529 <br> "+"<a href='http://www.smkn1bdl.sch.id/' target='blank'>smkn1bdl.sch.id/</a>"},
+	{lat: -5.363917, lng: 105.245401,
+    info: "<h2>SMK NEGERI 2 BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Prof. Dr. Sumantri Brojonegoro, Rajabasa, Gedung Meneng, Rajabasa, Kota Bandar Lampung 35145 </h3><hr>"+" 0721-701966 <br> "+"<a href='http://smkn2bdl.sch.id/' target='blank'>smkn2bdl.sch.id/</a>"},
+	{lat: -5.434605, lng: 105.260757,
+    info: "<h2>SMK NEGERI 3 BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Cut Mutia No.21 Gulak Galik, Teluk Betung Utara, Kota Bandar Lampung 35214 </h3><hr>"+" 0721-482037 <br> "+"<a href='http://www.smkn3-bdl.sch.id/' target='blank'>smkn3-bdl.sch.id/</a>"},
+	{lat: -5.423608, lng: 105.262286,
+    info: "<h2>SMK NEGERI 4 BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Hos Cokroaminoto No.102 Enggal, Tanjung Karang Pusat, Kota Bandar Lampung 35113 </h3><hr>"+" 0721-261637 <br> "+"<a href='http://smkn4-bdl.sch.id/' target='blank'>smkn4-bdl.sch.id/</a>"},
+	{lat: -5.398665, lng: 105.306257,
+    info: "<h2>SMK NEGERI 5 BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Pangeran Tirtayasa, Sukabumi, Kota Bandar Lampung 35134 </h3><hr>"+" 0721-350870 <br> "+"<a href='http://smkn5blampung.sch.id/' target='blank'>smkn5blampung.sch.id/</a>"},
+	{lat: -5.472261, lng: 105.245297,
+    info: "<h2>SMK NEGERI 6 BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Re. Martadinata, Sukamaju, Teluk Betung Barat, Kota Bandar Lampung 35236 </h3><hr>"+" 0721-488437 <br> "+"<a href='https://smkn6bdl.wordpress.com/' target='blank'>smkn6bdl.wordpress.com/</a>"},
+	{lat: -5.377244, lng: 105.312202,
+    info: "<h2>SMK NEGERI 7 BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Pendidikan / Malay Raya . Sukarame, Kota Bandar Lampung 35131 </h3><hr>"+" 0721-5610689 <br> "+"<a href='http://smkn7bandarlampung.sch.id/' target='blank'>smkn7bandarlampung.sch.id/</a>"},
+	{lat: -5.387751, lng: 105.206516,
+    info: "<h2>SMK NEGERI 8 BANDAR LAMPUNG</h2><hr>"+"<h3> JL. Imam Bonjol No. 52 Kemiling, Kota Bandar Lampung 35158 </h3><hr>"+" 081272323236 <br>"+"<a href='https://smkn8bl.sch.id/' target='blank'>smkn8bl.sch.id/</a>"}, 
+	{lat: -5.422331, lng: 105.265902,
+    info: "<h2>SMTI TANJUNGKARANG BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Jend. Sudirman No. 43, Rawa Laut, Tanjung Karang Timur, Kota Bandar Lampung 35127 </h3><hr>"+" 0721-253383 <br> "+"<a href='http://www.smksmti-bdl.sch.id/' target='blank'>smksmti-bdl.sch.id/</a>"},
+	{lat: -5.375385, lng: 105.302463,
+    info: "<h2>MAN 1 BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Letkol H. Endro Suratmin- Korpri Jaya, Kec. Sukarame Kota Bandar Lampung </h3><hr>"+" (0721) 706448 "},
+	{lat: -5.434603, lng: 105.280001,
+    info: "<h2>MAN 2 BANDAR LAMPUNG</h2><hr>"+"<h3> JL.GATOT SUBROTO NO.30 GARUNTANG BANDAR LAMPUNG, Teluk Betung, Kec. Teluk Betung Selatan Kota Bandar Lampung  </h3><hr>"},];
+	
+	</script>
 
 
 
