@@ -20,7 +20,7 @@
                     <button class="btn1">STATUS</button>
                     <div class="sidebar3">
                     <a href="2nd.php" target='blank'>NEGERI</a>
-                    <a href="" target='blank' >SWASTA</a>
+                    <a href="swasta.php" target='blank' >SWASTA</a>
                 </div></div>
                     <div class="s2">
                     <button class="btn2">JENJANG PENDIDIKAN</button>
