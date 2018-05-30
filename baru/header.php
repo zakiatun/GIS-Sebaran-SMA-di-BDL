@@ -28,7 +28,6 @@
                         <a href="2nd.php" target='blank' >SMA</a>
                         <a href="swasta.php" target='blank' >MA</a>
                         <a href="" target='blank' >SMK</a>
-                        <a href="" target='blank' >SLB</a>
                          </div>
                     </div>
 
