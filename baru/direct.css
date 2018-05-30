@@ -1,13 +1,42 @@
-
 #map {
-  height: 100%;
+  width: 50%;
+  height: 400px;
+  float:right;
 }
+
+.samping {
+position: absolute;
+  float:left;
+width:50%;
+height: 400px;
+  overflow: auto;
+}
+
+.samping div {
+  width: 100%;
+  height: 400px;
+padding: 10px;
+  box-sizing: border-box;
+  color:white;
+  background-color:grey;
+}
+
+#pano,
+#rute {
+  background-color:white;
+width: 50%;
+height: 800px;
+display: inline-block;
+vertical-align: top;
+}
+
 /* Optional: Makes the sample page fill the window. */
 html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+height: 100%;
+margin: 0;
+padding: 0;
 }
+
 #floating-panel {
   position: absolute;
   top: 10px;

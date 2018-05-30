@@ -85,10 +85,11 @@ function initialize(){
      var locations =
      [  	{lat: -5.397140, lng: 105.266789,
 	 info: "<h2>BANDAR LAMPUNG </h2> <hr>"+"<h3>Luas Bandar Lampung 169,21 km² dan Jumlah penduduk 1.166.761 jiwa</h3>"},
+     {lat: -5.375385, lng: 105.302463,
     info: "<h2>MAN 1 BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Letkol H. Endro Suratmin- Korpri Jaya, Kec. Sukarame Kota Bandar Lampung </h3><hr>"+" (0721) 706448 "},
 	{lat: -5.434603, lng: 105.280001,
     info: "<h2>MAN 2 BANDAR LAMPUNG</h2><hr>"+"<h3> JL.GATOT SUBROTO NO.30 GARUNTANG BANDAR LAMPUNG, Teluk Betung, Kec. Teluk Betung Selatan Kota Bandar Lampung  </h3><hr>"},];
-    
+	
 	</script>
 
 

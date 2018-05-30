@@ -196,8 +196,8 @@ function initialize(){
 	{lat: -5.387751, lng: 105.206516,
     info: "<h2>SMK NEGERI 8 BANDAR LAMPUNG</h2><hr>"+"<h3> JL. Imam Bonjol No. 52 Kemiling, Kota Bandar Lampung 35158 </h3><hr>"+" 081272323236 <br>"+"<a href='https://smkn8bl.sch.id/' target='blank'>smkn8bl.sch.id/</a>"}, 
 	{lat: -5.422331, lng: 105.265902,
-    info: "<h2>SMTI TANJUNGKARANG BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Jend. Sudirman No. 43, Rawa Laut, Tanjung Karang Timur, Kota Bandar Lampung 35127 </h3><hr>"+" 0721-253383 <br> "+"<a href='http://www.smksmti-bdl.sch.id/' target='blank'>smksmti-bdl.sch.id/</a>"},
-	{lat: -5.375385, lng: 105.302463,];
+    info: "<h2>SMTI TANJUNGKARANG BANDAR LAMPUNG</h2><hr>"+"<h3> Jl. Jend. Sudirman No. 43, Rawa Laut, Tanjung Karang Timur, Kota Bandar Lampung 35127 </h3><hr>"+" 0721-253383 <br> "+"<a href='http://www.smksmti-bdl.sch.id/' target='blank'>smksmti-bdl.sch.id/</a>"},]
+
 	</script>
 
 

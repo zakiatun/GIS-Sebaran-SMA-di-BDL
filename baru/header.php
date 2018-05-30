@@ -27,7 +27,7 @@
                         <div class="sidebar4">
                         <a href="sma.php" target='blank' >SMA</a>
                         <a href="ma.php" target='blank' >MA</a>
-                        <a href="" target='blank' >SMK</a>
+                        <a href="smk.php" target='blank' >SMK</a>
                          </div>
                     </div>
 

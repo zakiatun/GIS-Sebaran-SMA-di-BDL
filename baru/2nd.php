@@ -7,6 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>SI SEBARAN SMA/SEDERAJAT DI BANDAR LAMPUNG</title>
         <link rel="stylesheet" type="text/css" href="desain.css"/>
+        <link rel="stylesheet" type="text/css" href="foto.css"/>
         <style>
     #map {
     background-color: gray;
@@ -86,7 +87,7 @@ function initialize(){
      [  	{lat: -5.397140, lng: 105.266789,
 	 info: "<h2>BANDAR LAMPUNG </h2> <hr>"+"<h3>Luas Bandar Lampung 169,21 km² dan Jumlah penduduk 1.166.761 jiwa</h3>"},
     {lat:-5.422571, lng: 105.265161,
-    info: "<h2>SMAN 1 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan Jenderal Sudirman No.41, Rawa Laut, Tanjung Karang Timur, Engal, Rw. Laut, Engal, Kota Bandar Lampung, Lampung 35213 </h3><hr>"+"<a href='http://smansa-bdl.sch.id' target='blank'>smansa-bdl.sch.id</a>" },
+    info: "<h2>SMAN 1 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan Jenderal Sudirman No.41, Rawa Laut, Tanjung Karang Timur, Engal, Rw. Laut, Engal, Kota Bandar Lampung, Lampung 35213 </h3><hr>"+"<a href='http://smansa-bdl.sch.id' target='blank'>smansa-bdl.sch.id</a>"+"<div id=button><a href=#popup >Lihat</a></div><div id=popup> <div class=window><a href=# class=close-button title=Close>X</a><img src= putra1.jpg height= 100% width= 100%> </div> </div>" },
     {lat: -5.427049, lng: 105.254837,
     info: "<h2>SMAN 2 BANDAR LAMPUNG</h2><hr>"+"<h3> Jalan Amir Hamzah No. 1, Gotong Royong, Tanjung Karang Pusat, Gotong Royong, Tj. Karang Pusat, Kota Bandar Lampung, Lampung 35119 </h3><hr>"+"<a href='http://smanda-bdl.sch.id<' target='blank'>smanda-bdl.sch.id</a>"}, 
     {lat: -5.419214, lng: 105.244381,

@@ -49,6 +49,15 @@
             color:white;
             padding:20px;
         }
+        
+#pano,
+#rute {
+    background-color:white;
+	width: 50%;
+	height: 800px;
+	display: inline-block;
+	vertical-align: top;
+}
 
           
       </style>
@@ -60,24 +69,8 @@
     <br><br><br><br><br>
         <div><b style="color:white">Asal: </b>
             <select id="start">
-                <option value="Jalan Jenderal Sudirman No.41, Rawa Laut, Tanjung Karang Timur, Engal, Rw. Laut, Engal, Kota Bandar Lampung, Lampung 35213">SMAN 1 BANDAR LAMPUNG</option>
-                <option value="Jalan Amir Hamzah No. 1, Gotong Royong, Tanjung Karang Pusat, Gotong Royong, Tj. Karang Pusat, Kota Bandar Lampung, Lampung 35119">SMAN 2 BANDAR LAMPUNG</option>
-                <option value="Jalan Khairil Anwar No.30, Durian Payung, Tanjung Karang Pusat, Durian Payung, Tj. Karang Pusat, Kota Bandar Lampung, Lampung 35214">SMAN 3 BANDAR LAMPUNG</option>
-                <option value="Jl. Dr. Cipto Mangunkusumo, No 88, Teluk Betung, Kupang Teba, Tlk. Betung Utara, Kota Bandar Lampung, Lampung 35228">SMAN 4 BANDAR LAMPUNG</option>
-                <option value="Jalan Soekarno Hatta, Way Dadi, Sukarame, Way Dadi, Sukarame, Kota Bandar Lampung, Lampung 35132">SMAN 5 BANDAR LAMPUNG</option>
-                <option value="Jl. KH. Agus Anang No.35, Ketapang, Tlk. Betung Sel., Kota Bandar Lampung, Lampung 35245">SMAN 6 BANDAR LAMPUNG</option>
-                <option value="Jalan Teuku Cik Ditro No.2, Beringin Raya, Kemiling, Beringin Raya, Kemiling, Kota Bandar Lampung, Lampung 35158">SMAN 7 BANDAR LAMPUNG</option>
-                <option value="Jalan LAKSAMANA MALAHAYATI No.10, Talang, Teluk Betung Selatan, Talang, Tlk. Betung Sel., Bandar Lampung, Lampung 35229">SMAN 8 BANDAR LAMPUNG</option>
-                <option value="Jalan Panglima Polim No.18, Segala Mider, Tanjung Karang Barat, Segala Mider, Tj. Karang Bar., Kota Bandar Lampung, Lampung 35152">SMAN 9 BANDAR LAMPUNG</option>
-                <option value="Jalan sman 10: Jalan GATOT SUBROTO No.81, Tanjung Gading, North Teluk Betung, Kedamaian, Tj. Gading, Kedamaian, Kota Bandar Lampung, Lampung 35226 ">SMAN 10 BANDAR LAMPUNG</option>
-                <option value="JL. RE. Martadinata, Perwata, Tlk. Betung Tim., Kota Bandar Lampung, Lampung 35231 ">SMAN 11 BANDAR LAMPUNG</option>
-                <option value="Jalan Haji Endro Suratmin, Sukarame, Kota Bandar Lampung, Lampung 35131">SMAN 12 BANDAR LAMPUNG</option>
-                <option value="Jl. Padat Karya, Sinar Harapan, Rajabasa Jaya, Rajabasa, Kota  Bandar Lampung, Lampung 35141 ">SMAN 13 BANDAR LAMPUNG</option>
-                <option value="Jl. Perum Bukit Kemiling Permai, Kemiling Permai, Kemiling,  Kota Bandar Lampung, Lampung 35152">SMAN 14 BANDAR LAMPUNG</option>
-                <option value="Jl. Turi Raya, Labuhan Dalam, Tj. Senang, Kota Bandar Lampung, Lampung 35141 ">SMAN 15 BANDAR LAMPUNG</option>
-                <option value="Jalan DARUSSALAM, Susunan Baru, Tanjung Karang, Langkapura,  Kota Bandar Lampung, Lampung 35111">SMAN 16 BANDAR LAMPUNG</option>
-                <option value="Jl. Soekarno - Hatta, Pidada, Panjang, Kota Bandar Lampung,  Lampung 35241">SMAN 17 BANDAR LAMPUNG</option>
-                 </select>
+                <option value="Kota Bandar Lampung, Lampung 35213">BANDAR LAMPUNG</option>
+    </select>
         <b style="color:white">Tujuan: </b>
             <select id="end">
             <option value="Jalan Jenderal Sudirman No.41, Rawa Laut, Tanjung Karang Timur, Engal, Rw. Laut, Engal, Kota Bandar Lampung, Lampung 35213">SMAN 1 BANDAR LAMPUNG</option>
@@ -286,4 +279,6 @@
         </script>
             <script src="../../code.jquery.com/jquery-3.3.1.js"></script>
             <script src="index.js"></script>
+
+
 </html>
