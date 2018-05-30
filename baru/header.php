@@ -25,8 +25,8 @@
                     <div class="s2">
                     <button class="btn2">JENJANG PENDIDIKAN</button>
                         <div class="sidebar4">
-                        <a href="2nd.php" target='blank' >SMA</a>
-                        <a href="swasta.php" target='blank' >MA</a>
+                        <a href="sma.php" target='blank' >SMA</a>
+                        <a href="ma.php" target='blank' >MA</a>
                         <a href="" target='blank' >SMK</a>
                          </div>
                     </div>
