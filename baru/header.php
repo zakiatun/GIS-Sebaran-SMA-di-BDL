@@ -34,7 +34,7 @@
                     <button class="btn3">LOKASI</button>
                     <div class="sidebar5">
                         <a href="directz.php" target='blank' >DIRECT</a>
-                        <a href="overlay.html" target='blank' >OVERLAY</a>
+                        <a href="overlay.php" target='blank' >OVERLAY</a>
                      </div></div>
                      </div></div>
 </body>
