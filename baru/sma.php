@@ -15,7 +15,7 @@
     </head>
     
     <body>
-    <?php include 'header.php'?>
+
     <div id="map"></div>
 
             <script src="http://maps.googleapis.com/maps/api/js"></script>

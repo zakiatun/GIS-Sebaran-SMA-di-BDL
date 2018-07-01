@@ -75,9 +75,10 @@
             </select>
             </div>
 
-    <div id="left-panel"></div>
+
 
             <div id="map"></div>
+            <div id="left-panel"></div>
     <script>
       function initMap() {
         var directionsDisplay = new google.maps.DirectionsRenderer;
