@@ -30,8 +30,11 @@
                         <a href="smk.php" target='blank' >SMK</a>
                          </div>
                     </div>
-
-                        <a class="active" href="directz.php">JALUR</a>
+                    <div class="s3">
+                    <button class="btn3">LOKASI</button>
+                    <div class="sidebar5">
+                        <a href="directz.php" target='blank' >DIRECT</a>
+                        <a href="overlay.php" target='blank' >OVERLAY</a>
                      </div></div>
                      </div></div>
 </body>
