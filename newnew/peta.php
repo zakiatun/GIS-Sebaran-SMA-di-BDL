@@ -34,7 +34,7 @@ include_once "header.php";
 
 var officeLocations = [
 <?php
-$data = file_get_contents('http://localhost:8080/smagis/ambildata.php');
+$data = file_get_contents('http://localhost:8080/GIS-Sebaran-SMA-di-BDL.git/newnew/ambildata.php');
                 $no=1;
                 if(json_decode($data,true)){
                   $obj = json_decode($data);
@@ -46,7 +46,7 @@ $data = file_get_contents('http://localhost:8080/smagis/ambildata.php');
 } 
 ?>    
 ];
-
+var markers = [];
 function setMarkers(map, locations)
 {
     var globalPin = 'img/sman.png';
@@ -73,7 +73,9 @@ function setMarkers(map, locations)
             title: office[1],
             icon:'img/school.png'
         });
-
+        var markerCluster = new MarkerClusterer(map, markers{
+            {imagePath: 'img/m'
+        });
         google.maps.event.addListener(marker, 'click', getInfoCallback(map, contentString));
     }
 }
@@ -95,3 +97,4 @@ initialize();
       </div>
     </div>
 <?php include_once "footer.php"; ?>
+<script src="markerclusterer.js"></script>

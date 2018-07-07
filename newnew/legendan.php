@@ -9,21 +9,24 @@ include_once "header.php";
           <div class="panel panel-info panel-dashboard centered">
             <div class="panel-heading">
               <h2 class="panel-title"><strong> - TAMPILAN PETA - </strong></h2>
-              <table border=0 align="center">
+              <!--<select name="menu1" id="menu1">
+              <option value="http://localhost:8080/GIS-Sebaran-SMA-di-BDL.git/newnew/cobacustomlegend.php">Legend</option>
+              <option value="http://localhost:8080/GIS-Sebaran-SMA-di-BDL.git/newnew/petacluster.php">Cluster</option>
+            </select>-->
+            <table border=0 align="center">
                 <tr>
                   <td>
               <div onClick="window.location = 'http://localhost:8080/GIS-Sebaran-SMA-di-BDL.git/newnew/legendan.php';">
-                <input type="radio" style="pointer-events:none;" > Legend
+                <input type="radio" style="pointer-events:none;" checked > Legend
             </div></td>
                   <td>
             <div onClick="window.location = 'http://localhost:8080/GIS-Sebaran-SMA-di-BDL.git/newnew/petacluster.php';">
-                <input type="radio" style="pointer-events:none;"checked > Cluster
+                <input type="radio" style="pointer-events:none;" > Cluster
             </div></td>
           </table>
-
             </div>
             <div class="panel-body">
-            <?php include_once "sma.php"; ?>
+            <?php include_once "cobacustomlegend.php"; ?>
 </script>
             </div>
           </div>

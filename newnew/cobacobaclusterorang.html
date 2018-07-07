@@ -1,0 +1,255 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <script type="text/javascript" async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAV8AiebjdcoS-Ratewz-HDkFt7XCq3zOM&libraries=places&callback"></script>
+    <script type="text/javascript" src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <script type="text/javascript">
+        var gmarkers = [];
+        var markers =
+        [{
+            "title": 'IVIN',
+            "lat": '8.088306',
+            "lng": '77.538451',
+            "description": 'Basically am a Heart Specialist Doctor',
+            "type": 'D'
+        }, {
+            "title": 'Ratheesh',
+            "lat": '18.520430',
+            "lng": '73.856744',
+            "description": 'Basically am a Neuro Surgeon Doctor',
+            "type": 'P'
+        }, {
+            "title": 'John Doe',
+            "lat": '28.704059',
+            "lng": '77.102490',
+            "description": 'Basically am a Neuro Surgeon Doctor',
+            "type": 'H'
+        }, {
+            "title": 'Doe',
+            "lat": '9.925201',
+            "lng": '78.119775',
+            "description": 'Basically am a Neuro Surgeon Doctor',
+            "type": 'C'
+        }, {
+            "title": 'Anto',
+            "lat": '31.147130',
+            "lng": '75.341218',
+            "description": 'Basically am a Heart Specialist Doctor',
+            "type": 'D'
+        }, {
+            "title": 'Bibin',
+            "lat": '10.850516',
+            "lng": '76.271083',
+            "description": 'Basically am a Heart Specialist Doctor',
+            "type": 'P'
+        }, {
+            "title": 'DR (COLONEL)CHITALKAR PRAKASH',
+            "lat": '18.515729',
+            "lng": '73.834868',
+            "description": 'Null',
+            "type": 'D'
+        }, {
+            "title": 'DR (MRS) BARVE GOURI R',
+            "lat": '18.516840',
+            "lng": '73.834890',
+            "description": 'Null',
+            "type": 'D'
+        }, {
+            "title": 'DR (MRS) BARVE GOURI R',
+            "lat": '18.532630',
+            "lng": '73.830130',
+            "description": 'Null',
+            "type": 'D'
+        }, {
+            "title": 'DR ACHARI GOPAL',
+            "lat": '18.618730',
+            "lng": '73.753670',
+            "description": 'Null',
+            "type": 'D'
+        }, {
+            "title": 'DR ADKAR NEERAJ',
+            "lat": '18.529248',
+            "lng": '73.843384',
+            "description": 'Null',
+            "type": 'D'
+        }, {
+            "title": 'DR ADKAR NEERAJ',
+            "lat": '18.480763',
+            "lng": '73.872430',
+            "description": 'Null',
+            "type": 'D'
+        }, {
+            "title": 'DR ADKAR NEERAJ',
+            "lat": '18.554173',
+            "lng": '73.819616',
+            "description": 'Null',
+            "type": 'D'
+        }, {
+            "title": 'DR ADKAR RAJEEV',
+            "lat": '18.509172',
+            "lng": '73.831607',
+            "description": 'Null',
+            "type": 'D'
+        }, {
+            "title": 'DR ADVANI D G',
+            "lat": '18.541524',
+            "lng": '73.889383',
+            "description": 'Null',
+            "type": 'D'
+        }, {
+            "title": 'DR.A.CHARLES',
+            "lat": '9.918078',
+            "lng": '78.125464',
+            "description": '',
+            "type": 'D'
+        }, {
+            "title": 'DR (COLONEL)CHITALKAR PRAKASH',
+            "lat": '18.477510',
+            "lng": '73.889728',
+            "description": '',
+            "type": 'D'
+        }, {
+            "title": 'DR (MRS) BARVE GOURI R',
+            "lat": '18.510714',
+            "lng": '73.835288',
+            "description": '',
+            "type": 'D'
+        }, {
+            "title": 'DR (MRS) RUJUTA M PANSE',
+            "lat": '18.554336',
+            "lng": '73.801541',
+            "description": '',
+            "type": 'D'
+        }, {
+            "title": 'DR (MRS) PRABHUNE MANJUSHA',
+            "lat": '18.510347',
+            "lng": '73.815587',
+            "description": '',
+            "type": 'D'
+        }, {
+            "title": 'DR ABHYANKAR NITIN',
+            "lat": '18.512419',
+            "lng": '73.853139',
+            "description": '',
+            "type": 'D'
+        }, {
+            "title": 'DR ADATE SHALINI N',
+            "lat": '18.460939',
+            "lng": '73.812650',
+            "description": '',
+            "type": 'D'
+        }, {
+            "title": 'DR ADHICARY (MRS) SAUMYA',
+            "lat": '18.555575',
+            "lng": '73.808959',
+            "description": '',
+            "type": 'D'
+        }, {
+            "title": 'DR ADKAR (MRS) AADITEE R',
+            "lat": '18.510714',
+            "lng": '73.835288',
+            "description": '',
+            "type": 'D'
+        }];
+        window.onload = function () {
+            LoadMap();
+        }
+ 
+        function LoadMap() {
+            var mapOptions = {
+                center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+                zoom: 5,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                scaleControl: true,
+                scrollwheel: false,
+                zoomControl: true,
+                zoomControlOptions: {
+                    position: google.maps.ControlPosition.LEFT_TOP
+                },
+                scaleControl: true,
+                streetViewControl: true,
+                streetViewControlOptions: {
+                    position: google.maps.ControlPosition.LEFT_TOP
+                },
+                fullscreenControl: true
+            };
+ 
+            var infoWindow = new google.maps.InfoWindow();
+            var latlngbounds = new google.maps.LatLngBounds();
+            var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+            //var legend = document.getElementById("legend");
+            //legend.innerHTML = "";
+            for (var i = 0; i < markers.length; i++) {
+                var data = markers[i]
+                var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+                var icon = "";
+                switch (data.type) {
+                    case "D":
+                        icon = "Doctor";
+                        break;
+                    case "P":
+                        icon = "Pharmacy";
+                        break;
+                    case "H":
+                        icon = "Hospital";
+                        break;
+                    case "C":
+                        icon = "Clinic";
+                        break;
+                }
+                icon = "http://medical.vanuston.com/images/map/" + icon + ".png";
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    title: data.title,
+                    //icon: data.icon
+                    animation: google.maps.Animation.DROP,
+                    icon: new google.maps.MarkerImage(icon)
+                });
+                (function (marker, data) {
+                    google.maps.event.addListener(marker, "click", function (e) {
+                        //infoWindow.setContent("<div style = 'width:200px;height:300px;font-size:1.5em;text-align:center;'>" + data.title + "</br>" + data.description + "</div>");
+                        infoWindow.setContent("<div style = 'width:200px;height:300px;font-size:12px;;color:#5d5955;font-weight: normal;'> <img style='align:middle;width:200px;height: 160px;margin-top:20px;' src = '" + "images/doctors.jpg" + "' />" + "<div style='margin-top: -15px;'></br>" + data.title + "<hr/ style='margin-top: 10px;border-top: 2px solid #7dbb00;'></div>" + "<div style='margin-top: -15px;font-size: 13px'><i class='fa fa-map-marker'></i>&nbsp;" + data.description + "</div></div>");
+                        infoWindow.open(map, marker);
+                    });
+                })(marker, data);
+                latlngbounds.extend(marker.position);
+                gmarkers.push(marker);
+ 
+                //legend.innerHTML += "<div style = 'margin:5px'><img align = 'middle' src = '" + marker.icon + "' />&nbsp;" + marker.title + "</div>";
+            }
+ 
+            var markerCluster = new MarkerClusterer(map, gmarkers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+ 
+            navigator.geolocation.getCurrentPosition(function (p) {
+                var latitude = p.coords.latitude;
+                var longitude = p.coords.longitude;
+                document.getElementById("hfLat").value = latitude;
+                document.getElementById("hfLon").value = longitude;
+                var coords = new google.maps.LatLng(latitude, longitude);
+                var LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
+                var marker = new google.maps.Marker({
+                    position: LatLng,
+                    icon: "http://medical.vanuston.com/images/map_marker.gif",
+                    map: map,
+                    title: "<div style = 'height:20px;width:100px'><b>You are here:</b>"
+                });
+                google.maps.event.addListener(marker, "click", function (e) {
+                    var infoWindow = new google.maps.InfoWindow();
+                    infoWindow.setContent(marker.title);
+                    infoWindow.open(map, marker);
+                });
+            });
+            var bounds = new google.maps.LatLngBounds();
+            map.setCenter(latlngbounds.getCenter());
+            map.fitBounds(latlngbounds);
+        }        
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="map_canvas">
+    </div>
+    </form>
+</body>
+</html>

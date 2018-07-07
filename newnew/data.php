@@ -24,7 +24,7 @@ include_once "koneksi.php"; ?>
               </thead>
               <tbody>
               <?php
-                $data = file_get_contents('http://localhost:8080/smagis/ambildata.php');
+                $data = file_get_contents('http://localhost:8080/GIS-Sebaran-SMA-di-BDL.git/newnew/ambildata.php');
                 $no=1;
                 if(json_decode($data,true)){
                   $obj = json_decode($data);
